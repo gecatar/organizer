@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>Create Record</title>
+	<h:outputStylesheet library="css" name="style.css" />
+</h:head>
+<h:body>
+	<f:view>
+		<h:form id="form" styleClass="create form"
+			enctype="multipart/form-data">
+			<h:commandButton action="index" value="Back to main"></h:commandButton>
+			<br />
+			<h:panelGrid columns="3">
+				<h:outputLabel value="First Name:"></h:outputLabel>
+				<h:inputText value="#{recordsBean.firstName}"></h:inputText>
+				<h:outputLabel styleClass="alert"
+					value="#{recordsBean.firstNameAlert}"></h:outputLabel>
+				<h:outputLabel value="Last Name:"></h:outputLabel>
+				<h:inputText value="#{recordsBean.lastName}"></h:inputText>
+				<h:outputLabel styleClass="alert"
+					value="#{recordsBean.lastNameAlert}"></h:outputLabel>
+
+				<h:outputLabel value="Birth date:"></h:outputLabel>
+				<h:inputText id="date" value="#{recordsBean.date}" size="20"
+					required="true" label="Receipt Date">
+					<f:convertDateTime pattern="d-M-yyyy" />
+				</h:inputText>
+				<h:message for="date" style="color:red" />
+
+				<h:outputLabel value="Address:"></h:outputLabel>
+				<h:inputText value="#{recordsBean.address}"></h:inputText>
+				<h:outputLabel styleClass="alert"
+					value="#{recordsBean.addressAlert}"></h:outputLabel>
+				<h:outputLabel value="Phone number:"></h:outputLabel>
+				<h:inputText value="#{recordsBean.phoneNumber}"></h:inputText>
+				<h:outputLabel styleClass="alert"
+					value="#{recordsBean.phoneNumberAlert}"></h:outputLabel>
+			</h:panelGrid>
+			<h:outputLabel value="#{recordsBean.operationResult}"></h:outputLabel>
+			<h:inputFile id="file" value="#{recordsBean.file}" />
+			<h:commandButton value="Save" action="#{recordsBean.create}" />
+		</h:form>
+	</f:view>
+</h:body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Search Records</title>
+	<h:outputStylesheet library="css" name="style.css" />
+</h:head>
+<h:body>
+	<f:view>
+		<h:form>
+			<h:commandButton action="index" value="Back to main"></h:commandButton>
+			<br />
+			<h:panelGrid columns="4">
+				<h:outputLabel value="Search record"></h:outputLabel>
+				<h:inputText value="#{searchBean.searchArg}"></h:inputText>
+				<h:commandButton action="#{searchBean.search}" value="Search"></h:commandButton>
+				<h:commandButton action="advancedsearch" value="Advanced Search"></h:commandButton>
+			</h:panelGrid>
+			<ui:include src="WEB-INF/searchresults.xhtml" />
+		</h:form>
+	</f:view>
+</h:body>
+</html>

@@ -1,0 +1,13 @@
+form {
+	margin-left: 25%;
+	margin-right: 25%;
+	width: 100%;
+}
+
+.alert {
+	color: #FF0000;
+}
+
+.thumbnail {
+	width: 40px;
+}

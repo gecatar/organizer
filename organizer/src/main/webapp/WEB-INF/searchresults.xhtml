@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:body>
+	<f:view>
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Result size:"></h:outputLabel>
+				<h:outputLabel value="#{searchBean.size}"></h:outputLabel>
+			</h:panelGrid>
+			<h:dataTable value="#{searchBean.records}" var="record">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="First Name" />
+					</f:facet>
+					<h:outputText value="#{record.firstName}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Last Name" />
+					</f:facet>
+					<h:outputText value="#{record.lastName}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Birth date:" />
+					</f:facet>
+					<h:outputText value="#{record.date}">
+						<f:convertDateTime pattern="d-M-yyyy" />
+					</h:outputText>
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Phone Number" />
+					</f:facet>
+					<h:outputText value="#{record.phoneNumber}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Address" />
+					</f:facet>
+					<h:outputText value="#{record.address}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Pictuer" />
+					</f:facet>
+					<h:graphicImage styleClass="thumbnail"
+						url="#{pathProvider.getImageSourcePath(record.id)}" />
+				</h:column>
+			</h:dataTable>
+		</h:form>
+	</f:view>
+</h:body>
+</html>

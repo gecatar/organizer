@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Search Records</title>
+	<h:outputStylesheet library="css" name="style.css" />
+</h:head>
+<h:body>
+	<f:view>
+		<h:form>
+			<h:commandButton action="index" value="Back to main"></h:commandButton>
+			<br />
+			<h:panelGrid columns="4">
+				<h:outputLabel value="First name:"></h:outputLabel>
+				<h:inputText value="#{searchBean.firstName}"></h:inputText>
+				<h:selectBooleanCheckbox value="#{searchBean.orderByFirstName}" />
+				<h:outputLabel value="Order by"></h:outputLabel>
+				<h:outputLabel value="Last name:"></h:outputLabel>
+				<h:inputText value="#{searchBean.lastName}"></h:inputText>
+				<h:selectBooleanCheckbox value="#{searchBean.orderByLastName}" />
+				<h:outputLabel value="Order by"></h:outputLabel>
+			</h:panelGrid>
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Address:"></h:outputLabel>
+				<h:inputText value="#{searchBean.address}"></h:inputText>
+				<h:outputLabel value="Phone number:"></h:outputLabel>
+				<h:inputText value="#{searchBean.phoneNumber}"></h:inputText>
+			</h:panelGrid>
+			<h:panelGrid columns="2">
+				<h:commandButton action="#{searchBean.advancedSearch}"
+					value="Search"></h:commandButton>
+			</h:panelGrid>
+			<ui:include src="WEB-INF/searchresults.xhtml" />
+		</h:form>
+	</f:view>
+</h:body>
+</html>
