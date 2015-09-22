@@ -38,9 +38,12 @@
 				<h:outputLabel styleClass="alert"
 					value="#{recordsBean.phoneNumberAlert}"></h:outputLabel>
 			</h:panelGrid>
-			<h:outputLabel value="#{recordsBean.operationResult}"></h:outputLabel>
-			<h:inputFile id="file" value="#{recordsBean.file}" />
-			<h:commandButton value="Save" action="#{recordsBean.create}" />
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Picture"></h:outputLabel>
+				<h:inputFile id="file" value="#{recordsBean.file}" />
+				<h:commandButton value="Save" action="#{recordsBean.create}" />
+				<h:outputLabel styleClass="alert" value="#{recordsBean.fileAlert}"></h:outputLabel>
+			</h:panelGrid>
 		</h:form>
 	</f:view>
 </h:body>

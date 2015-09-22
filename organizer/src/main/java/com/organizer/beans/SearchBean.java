@@ -2,6 +2,7 @@ package com.organizer.beans;
 
 import java.io.Serializable;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +30,8 @@ public class SearchBean implements Serializable {
 	private String address;
 
 	private String phoneNumber;
+
+	private Date date;
 
 	private boolean orderByFirstName;
 
@@ -68,6 +71,10 @@ public class SearchBean implements Serializable {
 		return address;
 	}
 
+	public Date getDate() {
+		return date;
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -92,6 +99,10 @@ public class SearchBean implements Serializable {
 		return registerSize;
 	}
 
+	public boolean isOrderByBirthDate() {
+		return orderByBirthDate;
+	}
+
 	public boolean isOrderByFirstName() {
 		return orderByFirstName;
 	}
@@ -109,12 +120,20 @@ public class SearchBean implements Serializable {
 		this.address = address;
 	}
 
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public void setOrderByBirthDate(boolean orderByBirthDate) {
+		this.orderByBirthDate = orderByBirthDate;
 	}
 
 	public void setOrderByFirstName(boolean orderByFirstName) {

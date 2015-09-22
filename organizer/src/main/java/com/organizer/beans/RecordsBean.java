@@ -42,6 +42,8 @@ public class RecordsBean implements Serializable {
 
 	private String phoneNumberAlert;
 
+	private String fileAlert;
+
 	private Part file;
 
 	private String operationResult = "";
@@ -55,8 +57,8 @@ public class RecordsBean implements Serializable {
 		Record record = new Record();
 		if (verifyInputData()) {
 			record.setFirstName(firstName).setLastName(lastName)
-			.setPhoneNumber(phoneNumber).setAddress(address)
-			.setDate(date);
+					.setPhoneNumber(phoneNumber).setAddress(address)
+					.setDate(date);
 			if (verifyFile()) {
 				try (TransferObject transferObject = new TransferObject()) {
 					InputStream inputStream = file.getInputStream();
@@ -88,6 +90,10 @@ public class RecordsBean implements Serializable {
 
 	public Part getFile() {
 		return file;
+	}
+
+	public String getFileAlert() {
+		return fileAlert;
 	}
 
 	public String getFirstName() {
@@ -132,6 +138,10 @@ public class RecordsBean implements Serializable {
 
 	public void setFile(Part file) {
 		this.file = file;
+	}
+
+	public void setFileAlert(String fileAlert) {
+		this.fileAlert = fileAlert;
 	}
 
 	public void setFirstName(String firstName) {
