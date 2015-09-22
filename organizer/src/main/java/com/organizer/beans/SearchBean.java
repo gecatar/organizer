@@ -13,6 +13,12 @@ import javax.inject.Named;
 
 import com.organizer.model.Record;
 
+/**
+ * Manage user inputs for Basic and Advanced Search.
+ *
+ * @author GecaTM
+ *
+ */
 @Named
 @RequestScoped
 public class SearchBean implements Serializable {
@@ -42,6 +48,9 @@ public class SearchBean implements Serializable {
 	@Inject
 	private RecordsService recordsService;
 
+	/**
+	 * Make advance search with user defined parameters.
+	 */
 	public void advancedSearch() {
 		Map<String, String> searchFields = new HashMap<String, String>();
 		Map<String, Boolean> orderBy = new HashMap<String, Boolean>();
@@ -64,6 +73,16 @@ public class SearchBean implements Serializable {
 			orderBy.put("date", true);
 		}
 		records = recordsService.searchByCriteria(searchFields, orderBy);
+		registerSize = records.size();
+	}
+
+	/**
+	 * Make basic search.
+	 *
+	 * @throws Throwable
+	 */
+	public void search() throws Throwable {
+		records = recordsService.findByName(searchArg);
 		registerSize = records.size();
 	}
 
@@ -109,11 +128,6 @@ public class SearchBean implements Serializable {
 
 	public boolean isOrderByLastName() {
 		return orderByLastName;
-	}
-
-	public void search() throws Throwable {
-		records = recordsService.findByName(searchArg);
-		registerSize = records.size();
 	}
 
 	public void setAddress(String address) {

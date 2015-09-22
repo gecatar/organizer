@@ -44,6 +44,12 @@ public class RecordsService {
 		return allUsersWithName.list();
 	}
 
+	/**
+	 * Gets record by id.
+	 *
+	 * @param id
+	 * @return
+	 */
 	public Record getById(long id) {
 		return sessionFactory.openSession().get(Record.class, id);
 	}
@@ -108,6 +114,13 @@ public class RecordsService {
 		session.close();
 	}
 
+	/**
+	 * Search records by criteria.
+	 *
+	 * @param searchFields
+	 * @param orderBy
+	 * @return
+	 */
 	@SuppressWarnings("unchecked")
 	public List<Record> searchByCriteria(Map<String, String> searchFields,
 			Map<String, Boolean> orderBy) {
@@ -127,6 +140,11 @@ public class RecordsService {
 		return criteria.list();
 	}
 
+	/**
+	 * Update record.
+	 *
+	 * @param record
+	 */
 	public void updateRecord(Record record) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();

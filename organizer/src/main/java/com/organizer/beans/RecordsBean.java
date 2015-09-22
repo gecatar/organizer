@@ -16,6 +16,12 @@ import javax.servlet.http.Part;
 import com.organizer.model.Record;
 import com.organizer.utils.TransferObject;
 
+/**
+ * Validate user inputs and create new records.
+ *
+ * @author GecaTM
+ *
+ */
 @Named
 @RequestScoped
 public class RecordsBean implements Serializable {
@@ -55,6 +61,11 @@ public class RecordsBean implements Serializable {
 
 	private Date date;
 
+	/**
+	 * Sets records fields and store it into data base.
+	 *
+	 * @return
+	 */
 	public String create() {
 		Record record = new Record();
 		if (verifyInputData()) {
@@ -76,6 +87,47 @@ public class RecordsBean implements Serializable {
 			return "index";
 		}
 		return "create";
+	}
+
+	/**
+	 * Verify file size and mime type.
+	 *
+	 * @return
+	 */
+	private boolean verifyFile() {
+		if (file != null) {
+			if (file.getSize() < _MAX_FILE_SIZE
+					&& file.getContentType().equals(pictureMimeType)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Verify user input and alert user for incorrect inputs.
+	 *
+	 * @return
+	 */
+	private boolean verifyInputData() {
+		boolean correctInputData = true;
+		if (firstName.length() < 1 || firstName.length() > 255) {
+			firstNameAlert = "First name must be with lenght between 1 and 255!!!";
+			correctInputData = false;
+		}
+		if (lastName.length() < 1 || lastName.length() > 255) {
+			lastNameAlert = "Last name must be with lenght between 1 and 255!!!";
+			correctInputData = false;
+		}
+		if (address.length() < 1 || lastName.length() > 255) {
+			addressAlert = "Address must be with lenght between 1 and 255!!!";
+			correctInputData = false;
+		}
+		if (phoneNumber.length() < 1 || lastName.length() > 255) {
+			phoneNumberAlert = "Phone number must be with lenght between 1 and 255!!!";
+			correctInputData = false;
+		}
+		return correctInputData;
 	}
 
 	public String getAddress() {
@@ -172,37 +224,6 @@ public class RecordsBean implements Serializable {
 
 	public void setPhoneNumberAlert(String phoneNumberAlert) {
 		this.phoneNumberAlert = phoneNumberAlert;
-	}
-
-	private boolean verifyFile() {
-		if (file != null) {
-			if (file.getSize() < _MAX_FILE_SIZE
-					&& file.getContentType().equals(pictureMimeType)) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	private boolean verifyInputData() {
-		boolean correctInputData = true;
-		if (firstName.length() < 1 || firstName.length() > 255) {
-			firstNameAlert = "First name must be with lenght between 1 and 255!!!";
-			correctInputData = false;
-		}
-		if (lastName.length() < 1 || lastName.length() > 255) {
-			lastNameAlert = "Last name must be with lenght between 1 and 255!!!";
-			correctInputData = false;
-		}
-		if (address.length() < 1 || lastName.length() > 255) {
-			addressAlert = "Address must be with lenght between 1 and 255!!!";
-			correctInputData = false;
-		}
-		if (phoneNumber.length() < 1 || lastName.length() > 255) {
-			phoneNumberAlert = "Phone number must be with lenght between 1 and 255!!!";
-			correctInputData = false;
-		}
-		return correctInputData;
 	}
 
 }

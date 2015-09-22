@@ -76,6 +76,14 @@ public class TransferObject implements AutoCloseable {
 		return transfered;
 	}
 
+	/**
+	 * Transfer all available bytes.
+	 *
+	 * @param inputStream
+	 * @param outputStream
+	 * @param bufferSize
+	 * @throws IOException
+	 */
 	public void transferAllBytes(InputStream inputStream,
 			OutputStream outputStream, int bufferSize) throws IOException {
 		this.ist = inputStream;

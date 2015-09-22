@@ -12,10 +12,16 @@ import javax.persistence.Lob;
 import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.NamedQuery;
 
+/**
+ * Record
+ * 
+ * @author GecaTM
+ *
+ */
 @Entity
 @NamedQueries({
-	@NamedQuery(name = "All users names", query = "SELECT r.firstName FROM Record as r"),
-	@NamedQuery(name = "User with name", query = "SELECT r FROM Record as r WHERE r.firstName LIKE :firstName OR r.lastName LIKE :firstName ORDER BY r.firstName ASC") })
+		@NamedQuery(name = "All users names", query = "SELECT r.firstName FROM Record as r"),
+		@NamedQuery(name = "User with name", query = "SELECT r FROM Record as r WHERE r.firstName LIKE :firstName OR r.lastName LIKE :firstName ORDER BY r.firstName ASC") })
 public class Record implements Serializable {
 
 	@Id
