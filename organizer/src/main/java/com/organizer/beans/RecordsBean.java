@@ -22,9 +22,11 @@ public class RecordsBean implements Serializable {
 	private static final Logger LOGGER = Logger.getLogger(RecordsBean.class
 			.getName());
 
-	private static final int _MAX_FILE_SIZE = 100000;
+	private static final int _MAX_FILE_SIZE = 2097152;
 
 	private static final int bufferSize = 1000;
+
+	private static final String pictureMimeType = "image/jpeg";
 
 	private String firstName;
 
@@ -57,8 +59,8 @@ public class RecordsBean implements Serializable {
 		Record record = new Record();
 		if (verifyInputData()) {
 			record.setFirstName(firstName).setLastName(lastName)
-					.setPhoneNumber(phoneNumber).setAddress(address)
-					.setDate(date);
+			.setPhoneNumber(phoneNumber).setAddress(address)
+			.setDate(date);
 			if (verifyFile()) {
 				try (TransferObject transferObject = new TransferObject()) {
 					InputStream inputStream = file.getInputStream();
@@ -174,7 +176,8 @@ public class RecordsBean implements Serializable {
 
 	private boolean verifyFile() {
 		if (file != null) {
-			if (file.getSize() < _MAX_FILE_SIZE) {
+			if (file.getSize() < _MAX_FILE_SIZE
+					&& file.getContentType().equals(pictureMimeType)) {
 				return true;
 			}
 		}
