@@ -34,6 +34,8 @@ public class SearchBean implements Serializable {
 
 	private boolean orderByLastName;
 
+	private boolean orderByBirthDate;
+
 	@Inject
 	private RecordsService recordsService;
 
@@ -54,6 +56,9 @@ public class SearchBean implements Serializable {
 		}
 		if (orderByLastName) {
 			orderBy.put("lastName", true);
+		}
+		if (orderByBirthDate) {
+			orderBy.put("date", true);
 		}
 		records = recordsService.searchByCriteria(searchFields, orderBy);
 		registerSize = records.size();

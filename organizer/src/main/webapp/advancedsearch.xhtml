@@ -21,6 +21,10 @@
 				<h:inputText value="#{searchBean.lastName}"></h:inputText>
 				<h:selectBooleanCheckbox value="#{searchBean.orderByLastName}" />
 				<h:outputLabel value="Order by"></h:outputLabel>
+				<h:outputLabel value="Birth date:"></h:outputLabel>
+				<h:inputText value="#{searchBean.date}"></h:inputText>
+				<h:selectBooleanCheckbox value="#{searchBean.orderByBirthDate}" />
+				<h:outputLabel value="Order by"></h:outputLabel>
 			</h:panelGrid>
 			<h:panelGrid columns="2">
 				<h:outputLabel value="Address:"></h:outputLabel>
